@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Queda de Tensão</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        form {
+            margin: 0 auto;
+            max-width: 600px;
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Queda de Tensão</h1>
+    <form method="post">
+        <label for="tipo_ligacao">Tipo de ligação:</label>
+        <select name="tipo_ligacao" required>
+            <option value="monofasico">Monofásico</option>
+            <option value="bifasico">Bifásico</option>
+            <option value="trifasico">Trifásico</option>
+        </select>
+        <label for="distancia">Distância (metros):</label>
+        <input type="number" name="distancia" step="0.01" required>
+        <label for="potencia">Potência (Watts):</label>
+        <input type="number" name="potencia" step="0.01" required>
+        <label for="tensao">Tensão:</label>
+        <select name="tensao" required>
+            <option value="127">127V</option>
+            <option value="220">220V</option>
+            <option value="127/220">127/220V</option>
+            <option value="220/380">220/380V</option>
+        </select>
+        <label for="limite_queda_tensao">Limite de Queda de Tensão (%):</label>
+        <input type="number" name="limite_queda_tensao" min="0" max="100" required>
+        <label for="tipo_cabo">Tipo de cabo:</label>
+        <select name="tipo_cabo" required>
+            <option value="cobre">Cobre</option>
+            <option value="aluminio">Alumínio</option>
+        </select>
+        <input type="submit" value="Calcular">
+    </form>
+</body>
+</html>

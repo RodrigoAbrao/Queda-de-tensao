@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resultado da Calculadora de Queda de Tensão</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .lead {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado da Calculadora de Queda de Tensão</h1>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <p class="lead">Bitola do cabo: {{ bitola_cabo }} mm²</p>
+                <p class="lead">Queda de tensão: {{ queda_tensao }} %</p>
+                <a class="btn" href="/">Voltar</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
