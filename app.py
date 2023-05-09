@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from calcular_queda_tensao import calcular_queda_tensao
 
 app = Flask(__name__)
@@ -21,6 +21,18 @@ def index():
         return render_template("resultado.html", bitola_cabo=bitola_cabo, queda_tensao=queda_tensao)
 
     return render_template("index.html")
+
+
+@app.route('/get_tension')
+def get_tension():
+    type = request.args.get('type', type=str)
+    if type == 'monofasico':
+        tension = {'127': '127', '220': '220'}
+    elif type in ['bifasico', 'trifasico']:
+        tension = {'127/220': '127/220', '220/380': '220/380'}
+    else:
+        tension = {}
+    return jsonify(tension)
 
 
 if __name__ == "__main__":

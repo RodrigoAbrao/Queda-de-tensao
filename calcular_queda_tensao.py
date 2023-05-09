@@ -71,6 +71,10 @@ tabela_queda_tensao_aluminio_trifasica = {
 
 
 def calcular_queda_tensao(tipo_ligacao, distancia, potencia, tensao, limite_queda_tensao, tipo_cabo):
+
+    bitola_cabo = "Fora dos limites"
+    queda_tensao = "Fora dos limites"
+
     # Converter a tensão de entrada se for 127/220 ou 220/380
     if tensao == "127/220":
         tensao = 220

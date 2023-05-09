@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Calculadora de Queda de Tensão</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <style>
         body {
             background-color: #f2f2f2;
@@ -48,7 +49,7 @@
     <h1>Calculadora de Queda de Tensão</h1>
     <form method="post">
         <label for="tipo_ligacao">Tipo de ligação:</label>
-        <select name="tipo_ligacao" required>
+        <select name="tipo_ligacao" id="type" required>
             <option value="monofasico">Monofásico</option>
             <option value="bifasico">Bifásico</option>
             <option value="trifasico">Trifásico</option>
@@ -58,11 +59,8 @@
         <label for="potencia">Potência (Watts):</label>
         <input type="number" name="potencia" step="0.01" required>
         <label for="tensao">Tensão:</label>
-        <select name="tensao" required>
-            <option value="127">127V</option>
-            <option value="220">220V</option>
-            <option value="127/220">127/220V</option>
-            <option value="220/380">220/380V</option>
+        <select name="tensao" id="tension" required>
+            <!-- This will be filled dynamically -->
         </select>
         <label for="limite_queda_tensao">Limite de Queda de Tensão (%):</label>
         <input type="number" name="limite_queda_tensao" min="0" max="100" required>
@@ -73,5 +71,19 @@
         </select>
         <input type="submit" value="Calcular">
     </form>
+    <script>
+        $(document).ready(function() {
+            $('#type').change(function() {
+                var type = $(this).val();
+                var options = '';
+                if(type == 'monofasico'){
+                    options = '<option value="127">127</option><option value="220">220</option>';
+                } else if(type == 'bifasico' || type == 'trifasico'){
+                    options = '<option value="127/220">127/220</option><option value="220/380">220/380</option>';
+                }
+                $('#tension').html(options);
+            });
+            $('#type').trigger('change');  // Trigger the change event to initialize the options
+        });
+    </script>
 </body>
-</html>
