@@ -3,13 +3,6 @@ from flask import Flask, render_template, request, jsonify
 from calcular_queda_tensao import calcular_queda_tensao
 
 
-def patched_getfqdn(name=''):
-    return name
-
-
-socket.getfqdn = patched_getfqdn
-
-
 app = Flask(__name__)
 
 
