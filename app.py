@@ -2,6 +2,14 @@
 from flask import Flask, render_template, request, jsonify
 from calcular_queda_tensao import calcular_queda_tensao
 
+
+def patched_getfqdn(name=''):
+    return name
+
+
+socket.getfqdn = patched_getfqdn
+
+
 app = Flask(__name__)
 
 
@@ -37,6 +45,6 @@ def get_tension():
 
 if __name__ == "__main__":
     app.run(debug=True)
-# FALTA ADICIONAR LIMITANTES PARA O QUAL O CODIGO N√O FUNCIONA
+# FALTA ADICIONAR LIMITANTES PARA O QUAL O CODIGO N√ÉO FUNCIONA
 # FALTA SUBIR SERVIDOR
-# https://br.prysmiangroup.com/sites/default/files/atoms/files/Guia_de_Dimensionamento-Baixa_Tensao_Rev9.pdf TABELA BASE DA QUEDA DE TENS√O
+# https://br.prysmiangroup.com/sites/default/files/atoms/files/Guia_de_Dimensionamento-Baixa_Tensao_Rev9.pdf TABELA BASE DA QUEDA DE TENS√ÉO

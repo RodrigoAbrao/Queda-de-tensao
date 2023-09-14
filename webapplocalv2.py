@@ -1,6 +1,14 @@
 # -*- coding: utf-8 -*-
-from flask import Flask, render_template, request
 from calcular_queda_tensao import calcular_queda_tensao
+from flask import Flask, render_template, request
+import socket
+
+
+def patched_getfqdn(name=''):
+    return name
+
+
+socket.getfqdn = patched_getfqdn
 
 app = Flask(__name__)
 
